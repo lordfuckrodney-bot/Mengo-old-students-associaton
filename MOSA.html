@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mengo Old Students Association (MOSA)</title>
+  <style>
+    /* CSS RESET & VARIABLES */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    :root {
+      --mengo-red: #a30000;
+      --mengo-gold: #e5a93c;
+      --mengo-navy: #002147;
+      --bg-light: #f8f9fa;
+      --text-dark: #222;
+      --text-light: #fff;
+    }
+
+    body {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* HEADER & NAV */
+    header {
+      background: var(--mengo-navy);
+      color: var(--text-light);
+      padding: 1rem 0;
+      border-bottom: 4px solid var(--mengo-gold);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand h1 {
+      font-size: 1.4rem;
+      letter-spacing: 1px;
+    }
+
+    .brand span {
+      color: var(--mengo-gold);
+      font-size: 0.85rem;
+      display: block;
+      font-weight: normal;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+
+    nav ul li a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: var(--mengo-gold);
+    }
+
+    /* HERO SECTION */
+    .hero {
+      background: linear-gradient(rgba(0,33,71,0.85), rgba(163,0,0,0.85)), 
+                  url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+      color: var(--text-light);
+      padding: 6rem 2rem;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h2 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .motto-badge {
+      display: inline-block;
+      background: var(--mengo-gold);
+      color: #000;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-weight: bold;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--mengo-gold);
+      color: #000;
+      padding: 0.8rem 2rem;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .btn:hover {
+      background: #ffc44d;
+      transform: translateY(-2px);
+    }
+
+    /* SECTION BASE */
+    section {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      color: var(--mengo-navy);
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--mengo-red);
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+
+    /* ABOUT SECTION */
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .about-box {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      border-top: 4px solid var(--mengo-red);
+    }
+
+    .about-box h3 {
+      color: var(--mengo-navy);
+      margin-bottom: 1rem;
+    }
+
+    /* CABINET SECTION */
+    .cabinet-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .cabinet-card {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      transition: transform 0.3s;
+      border: 1px solid #eee;
+    }
+
+    .cabinet-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: var(--mengo-navy);
+      color: var(--mengo-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin: 0 auto 1.5rem;
+      border: 4px solid var(--mengo-gold);
+    }
+
+    .cabinet-card h4 {
+      color: var(--mengo-navy);
+      font-size: 1.2rem;
+    }
+
+    .cabinet-card .role {
+      color: var(--mengo-red);
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .cabinet-card p {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    /* WHAT WE DO SECTION */
+    .activities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .activity-card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      position: relative;
+    }
+
+    .activity-card h3 {
+      color: var(--mengo-navy);
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .activity-card h3::before {
+      content: '✔';
+      color: var(--mengo-gold);
+      background: var(--mengo-navy);
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+    }
+
+    /* JOIN / CONTACT FORM */
+    .join-section {
+      background: var(--mengo-navy);
+      color: var(--text-light);
+      border-radius: 12px;
+      padding: 3rem 2rem;
+      margin-top: 2rem;
+    }
+
+    .join-section .section-title {
+      color: var(--text-light);
+    }
+
+    .join-form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 0.9rem;
+      border-radius: 6px;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-weight: 500;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #001228;
+      color: var(--text-light);
+      text-align: center;
+      padding: 2.5rem 1rem;
+      margin-top: 3rem;
+      border-top: 3px solid var(--mengo-gold);
+    }
+
+    footer p {
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .hero h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="nav-container">
+      <div class="brand">
+        <div>
+          <h1>M.O.S.A</h1>
+          <span>Mengo Old Students Association</span>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#about">About MOSA</a></li>
+          <li><a href="#cabinet">Executive Cabinet</a></li>
+          <li><a href="#activities">Our Work</a></li>
+          <li><a href="#join">Join Network</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" style="max-width: 100%; padding-left: 0; padding-right: 0;">
+    <div class="hero-content">
+      <div class="motto-badge">Motto: Akwana Akira Ayomba</div>
+      <h2>Preserving Legacy, Empowering the Future</h2>
+      <p>Welcome to the global network of proud Bannamengo. Founded in 1895, Mengo Senior School remains Uganda’s premier institution of excellence and faith.</p>
+      <a href="#join" class="btn">Register as an Alumnus</a>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about">
+    <h2 class="section-title">About the Association</h2>
+    <div class="about-grid">
+      <div class="about-box">
+        <h3>Our History & Heritage</h3>
+        <p>Mengo Senior School is the oldest school in Uganda, established in 1895 by the Church Missionary Society. MOSA was created to unite generations of alumni (Bannamengo) who have walked through its prestigious gates on Namirembe Hill.</p>
+      </div>
+      <div class="about-box">
+        <h3>Our Vision</h3>
+        <p>To be the most vibrant, impactful, and globally connected alumni association in East Africa, ensuring Mengo Senior School remains a premier institution of academic and leadership excellence.</p>
+      </div>
+      <div class="about-box">
+        <h3>Core Values</h3>
+        <p>Grounded in the school's identity: <strong>Fear of God, Integrity, and Respect of Persons & Property</strong>. We strive to embody these values in all alumni engagements and projects.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRESIDENTIAL CABINET SECTION -->
+  <section id="cabinet">
+    <h2 class="section-title">The Executive Cabinet</h2>
+    <div class="cabinet-grid">
+
+      <!-- President -->
+      <div class="cabinet-card">
+        <div class="avatar">DM</div>
+        <h4>Derrick Matovu</h4>
+        <div class="role">President</div>
+        <p>Steering the strategic vision, expanding strategic partnerships, and leading general association developments.</p>
+      </div>
+
+      <!-- Vice President -->
+      <div class="cabinet-card">
+        <div class="avatar">BN</div>
+        <h4>Barbara Nankya Mutagubya</h4>
+        <div class="role">Vice President</div>
+        <p>Overseeing internal operations, alumni chapter activations, and special projects governance.</p>
+      </div>
+
+      <!-- General Secretary -->
+      <div class="cabinet-card">
+        <div class="avatar">RN</div>
+        <h4>Ritah Nakubulwa</h4>
+        <div class="role">General Secretary</div>
+        <p>Managing association communications, official documentation, and executive administration.</p>
+      </div>
+
+      <!-- Treasurer -->
+      <div class="cabinet-card">
+        <div class="avatar">AG</div>
+        <h4>Allen Gwokyalya</h4>
+        <div class="role">Treasurer</div>
+        <p>Directing financial planning, fundraising accountability, and endowment development.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WHAT WE DO SECTION -->
+  <section id="activities">
+    <h2 class="section-title">What We Do</h2>
+    <div class="activities-grid">
+
+      <div class="activity-card">
+        <h3>School Infrastructure Support</h3>
+        <p>MOSA mobilizes resources to support major school developments, including contributing to modern learning facilities, sports grounds, and school building expansions.</p>
+      </div>
+
+      <div class="activity-card">
+        <h3>Mentorship & Career Guidance</h3>
+        <p>Alumni regularly visit Namirembe Hill to provide mentorship, career guidance sessions, and professional networking advice to current S.1–S.6 students.</p>
+      </div>
+
+      <div class="activity-card">
+        <h3>Bannamengo Reunion Events</h3>
+        <p>We organize annual dinners, sports galas, and networking dinners where old boys and girls reconnect, share business leads, and celebrate their shared history.</p>
+      </div>
+
+      <div class="activity-card">
+        <h3>Bursaries & Student Welfare</h3>
+        <p>Providing hardship bursaries and financial support to bright but disadvantaged students at Mengo Senior School so they can complete their education.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- REGISTRATION FORM -->
+  <section id="join">
+    <div class="join-section">
+      <h2 class="section-title">Join the MOSA Global Database</h2>
+      <form class="join-form" onsubmit="event.preventDefault(); alert('Thank you, Bannamengo! Your details have been submitted.');">
+        <div class="form-group">
+          <label for="fullname">Full Name</label>
+          <input type="text" id="fullname" placeholder="e.g. John Mukasa" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="john@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="years">Years at Mengo SS (e.g. 2012 - 2017)</label>
+          <input type="text" id="years" placeholder="O-Level / A-Level completion years" required>
+        </div>
+        <button type="submit" class="btn" style="width: 100%; text-align: center; border: none; cursor: pointer;">Submit Membership Details</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 Mengo Old Students Association (MOSA). All rights reserved.</p>
+    <p>Mengo Senior School — Hoima Road, Namirembe Hill, Kampala, Uganda.</p>
+  </footer>
+
+</body>
+</html>
